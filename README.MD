@@ -1,6 +1,6 @@
-# Je Suis Mark Zuckerberg
+# I'm Mark Zuckerberg
 
-"Je Suis Mark Zuckerberg" is a silly chrome extension that re-imagines your
+"I'm Mark Zuckerberg" is a Chrome extension that re-imagines your
 Facebook experience by replacing all your friends profile images and names 
 with Mark Zuckerberg.
 

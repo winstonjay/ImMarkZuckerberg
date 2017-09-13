@@ -1,14 +1,15 @@
 /*===========================================
-* * *     Je Suis Mark Zuckerberg       * * * 
+* * *     I'm Mark Zuckerberg           * * * 
 =============================================
 
-"Je Suis Mark Zuckerberg" is a silly chrome extension that customises your
-Facebook experience by replacing all your friends profile images and names 
-with Mark Zuckerberg.
+"I'm Mark Zuckerberg" is a Chrome extension that customises your Facebook 
+experience by replacing all your friends profile images and names with 
+Mark Zuckerberg.
 
 Aim:
     Try to replace the existance of all usernames and profile images with
-    Mark Zuckerberg within the Facebook DOM.
+    Mark Zuckerberg within the Facebook DOM, as to give the illusion that
+    its just you and Mark there.
 
 TODO:
     *   Update selector lists to be more page specific, as to reduce the 
@@ -42,7 +43,6 @@ function Mark() {
     this.zuckify = function() {
         replaceUsernames(fbNameLocations);
         replaceUserThumbnails(fbProfileThumbs);
-
         // Are we at the homepage or somewhere else?
         if (!this.pageurl.endsWith(".com/")) {
             replaceUserProfileImages(fbProfilePicture);
@@ -65,7 +65,7 @@ function Mark() {
         }
     }
 
-    function replaceUsernames(locations) {
+    function initUsernames(locations) {
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
                 $(element).text(MarkZuckerberg);
@@ -84,6 +84,7 @@ These are probally going to change pretty often.
 var fbNameLocations = [
     ".fwb.fcg a",                   // Feed post header.
     ".fwb a",                       // Feed post header.
+    ".tickerFeedMessage span.fwb",  // top right side feed notifications.
     "a.profileLink",                // 
     "a.UFICommentActorName",        // Feed post comments.
     "._55lr",                       // Right sidebar contact.
@@ -94,8 +95,13 @@ var fbNameLocations = [
     "div._4l_v span.fwb",           // notifications dropdown.
     "a._zci",                       // name on videos pictures ?
     ".tooltipText span",            // pop ups ?
-
+    // just on homepage
+    "a.fwn",                        // when you click on birthday's and a list pops up.
+    // Following items are forming the basis of a seperate list
+    // that are not present in the hompage.
     "._33vv a",                     // Page Name.
+    "._50f3",                       // friends tiles (profile page).
+    "a.nameButton span.uiButtonText"// secondary header.
 ];
 
 // fbProfileThumbs : 
@@ -103,7 +109,7 @@ var fbNameLocations = [
 var fbProfileThumbs = [
     "img._s0._4ooo._5xib._5sq7._44ma._rw.img",  // Post thumbnail.
     "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.      
-    "img.UFIActorImage._54ru.img",              // Comments **need to edit to not replace self.**
+    "._3b-9 img.UFIActorImage._54ru.img",       // Comments.
     "._55lt img.img",                           //
     "._31o4._3njy img.img",                     //
     "img._s0._4ooo.tickerStoryImage._54ru.img", // Top right notifications.
@@ -121,7 +127,7 @@ var fbProfilePicture = [
 
 /* 'ready' Utility. *
 =====================
-Written by ryan morr.
+Written by Ryan Morr.
 http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/ 
 */
 (function(win) {
