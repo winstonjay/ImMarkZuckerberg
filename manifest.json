@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Je Suis Mark Zuckerberg",
+    "description": "Replaces all your Facebook friends with Mark Zuckerberg.",
+    "version": "0.01",
+    "icons": {  
+        "16": "mark_xoxo/mark16.png",
+        "48": "mark_xoxo/mark48.png",
+        "128": "mark_xoxo/mark128.png"
+    },
+    "web_accessible_resources": [
+        "mark_xoxo/mark128.png",
+        "mark_xoxo/mark512.png"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.facebook.com/*"
+            ],
+            "js": [ "jquery-3.1.1.slim.min.js", "content.js" ]
+        }
+    ]
+}
