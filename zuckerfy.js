@@ -46,8 +46,10 @@ function Mark() {
         // Are we at the homepage or somewhere else?
         // Find out and add page specific observers.
         if (window.location.pathname == '/') {
+            console.log("Home.");
             addUsernameObservers(fbUserNames.home);
         } else {
+            console.log("page.");
             addUsernameObservers(fbUserNames.page);
             addImageObservers(fbUserImg.pageThumbs, MarkImage128);
             addImageObservers(fbUserImg.mainProfile, MarkImage512);
@@ -88,6 +90,7 @@ var fbUserNames = {
         "a.profileLink",                // 
         "a.UFICommentActorName",        // Feed post comments.
         "._55lr",                       // Right sidebar contact.
+        "._364g",                       // sidebar search result.
         ".titlebarText.fixemoji span",  //
         ".author.fixemoji span",        // Blue navigation messages drop-down.
         "div._4l_v span.fwb",           // notifications dropdown.
@@ -101,6 +104,7 @@ var fbUserNames = {
         "._1fw3"                        // stories.
     ],
     page: [ 
+        ".alternate_name",               // under main name.
         "#fb-timeline-cover-name",       //
         "._33vv a",                      // Page Name.
         "._50f3",                        // friends tiles (profile page).
