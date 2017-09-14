@@ -34,12 +34,17 @@ const MarkZuckerberg = "Mark Zuckerberg",
 
 
 function Mark() {
-    /* Mark xoxoxoxo */
+    /* Mark's purpose is to zuckerfy everything. It has one public method 'zuckerfy'
+    which ads MutationObserver functions to DOM elements that contain usernames or profile
+    images. These functions will update the DOM dynamically whenever a new instance of any
+    given selctions becomes ready (similar to an inital document ready function). */
+
     this.zuckerfy = function() { 
         // Intialise site-wide observers.
         addUsernameObservers(fbUserNames.allSite);
         addImageObservers(fbUserImg.globalThumbs, MarkImage128);
         // Are we at the homepage or somewhere else?
+        // Find out and add page specific observers.
         if (window.location.pathname == '/') {
             addUsernameObservers(fbUserNames.home);
         } else {
@@ -67,6 +72,8 @@ function Mark() {
             });
         }
     }
+    // TODO: data tooltip selectors so when elements are hovered
+    // on they pop up with mark.
 }
 
 /* Selector locations. *
@@ -124,6 +131,8 @@ var fbUserImg = {
 
 /* 'ready' Utility. *
 =====================
+Creates MutationObservers so our selected elements will change to Mark when 
+they are dynamically created by facebook.
 Written by Ryan Morr.
 http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/ 
 */
