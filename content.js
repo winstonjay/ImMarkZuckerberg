@@ -20,9 +20,7 @@ TODO:
         un-applied profile images and usernames.
 
     *   Correctly label with comments all the DOM selectors.
-
-    *   Re-write without jQuery dependency.
-
+    
     *   Maybe Add with multiple images of Mark to spice it up a bit.
 
     * Publish: https://developer.chrome.com/webstore/publish
@@ -41,7 +39,6 @@ const MarkZuckerberg = "Mark Zuckerberg",
 
 function Mark() {
     /* Mark xoxoxoxo */
-
     this.zuckerfy = function() { 
         // Intialise site-wide observers.
         addUsernameObservers(fbUserNames.allSite);
@@ -60,7 +57,7 @@ function Mark() {
     function addImageObservers(locations, image) {
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
-                $(element).attr('src', image);
+                element.src = image;
             });
         }
     }
@@ -70,8 +67,7 @@ function Mark() {
     function addUsernameObservers(locations) {
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
-                $(element).text(MarkZuckerberg);
-                // replaceText(element, MarkZuckerberg);
+                element.textContent = MarkZuckerberg;
             });
         }
     }
