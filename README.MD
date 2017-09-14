@@ -9,4 +9,5 @@ with Mark Zuckerberg.
 ### Ongoing additons.
 As the Facebook DOM is constantly changing and can vary from user to user. This 
 exstention needs constant updating to make sure as many user instances are replaced
-as possible. This merely requires searching out elements in the DOM.
+as possible. This is time consuming but merely requires snooping out elements in the 
+DOM that contain usernames and profile images.

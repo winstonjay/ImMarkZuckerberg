@@ -12,15 +12,11 @@ Aim:
     its just you and Mark there.
 
 TODO:
-    *   Update selector lists to be more page specific, as to reduce the 
-        number of active MutationObservers. This will require editing the
-        Mark.zuckify method to filter out un-needed selections also.
-
     *   Refine selector locations to be more element specific and hunt out
         un-applied profile images and usernames.
 
     *   Correctly label with comments all the DOM selectors.
-    
+
     *   Maybe Add with multiple images of Mark to spice it up a bit.
 
     * Publish: https://developer.chrome.com/webstore/publish
@@ -93,7 +89,9 @@ var fbUserNames = {
     ],
     home: [
         ".fbRemindersTitle strong",     // reminders like birthdays.
-        "a.fwn"                         // when you click on birthday's and a list pops up.
+        "a.fwn",                        // when you click on birthday's and a list pops up.
+        ".name span.nameText",          // little right name links.
+        "._1fw3"                        // stories.
     ],
     page: [ 
         "#fb-timeline-cover-name",       //
@@ -152,7 +150,6 @@ http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/
         // Check if the element is currently in the DOM
         check();
     }
-
     function check() {
         // Check the DOM for elements matching a stored selector
         for (var i = 0, len = listeners.length, listener, elements; i < len; i++) {
