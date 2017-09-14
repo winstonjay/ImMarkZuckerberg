@@ -13,7 +13,7 @@ Aim:
 
 TODO:
     *   Refine selector locations to be more element specific and hunt out
-        un-applied profile images and usernames.
+        un-applied profile images and usernames. 
 
     *   Correctly label with comments all the DOM selectors.
 
