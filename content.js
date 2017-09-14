@@ -22,6 +22,8 @@ TODO:
     *   Correctly label with comments all the DOM selectors.
 
     *   Re-write without jQuery dependency.
+
+    *   Maybe Add with multiple images of Mark to spice it up a bit.
 */
 "use strict";
 
@@ -42,30 +44,27 @@ function Mark() {
 
     this.zuckify = function() {
         replaceUsernames(fbNameLocations);
-        replaceUserThumbnails(fbProfileThumbs);
+        replaceImages(fbProfileThumbs, MarkImage128);
         // Are we at the homepage or somewhere else?
         if (!this.pageurl.endsWith(".com/")) {
-            replaceUserProfileImages(fbProfilePicture);
+            replaceImages(fbProfilePicture, MarkImage512);
         }
     }
 
-    function replaceUserProfileImages(locations) {
+    // replaceImages : call with a list of selectors and
+    // a specific size image to relplace with.
+    function replaceImages(locations, image) {
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
-                $(element).attr('src', MarkImage512);
+                $(element).attr('src', image);
             });
         }
     }
 
-    function replaceUserThumbnails(locations) {
-        for (var i = 0; i < locations.length; i++) {
-            ready(locations[i], function(element) {
-                $(element).attr('src', MarkImage128);
-            });
-        }
-    }
-
-    function initUsernames(locations) {
+    // replaceUsernames : Usernames are allways replaced
+    // with "Mark Zuckerberg". Call with different selectors
+    // depending on page the location.
+    function replaceUsernames(locations) {
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
                 $(element).text(MarkZuckerberg);
@@ -95,25 +94,31 @@ var fbNameLocations = [
     "div._4l_v span.fwb",           // notifications dropdown.
     "a._zci",                       // name on videos pictures ?
     ".tooltipText span",            // pop ups ?
-    // just on homepage
-    "a.fwn",                        // when you click on birthday's and a list pops up.
+
     // Following items are forming the basis of a seperate list
     // that are not present in the hompage.
-    "._33vv a",                     // Page Name.
-    "._50f3",                       // friends tiles (profile page).
-    "a.nameButton span.uiButtonText"// secondary header.
+    "._33vv a",                      // Page Name.
+    "._50f3",                        // friends tiles (profile page).
+    "a.nameButton span.uiButtonText",// secondary header.
+
+    // just on homepage
+    "a.fwn"                         // when you click on birthday's and a list pops up.
 ];
 
 // fbProfileThumbs : 
 // Locations of images affected by replaceUserThumbnails().
 var fbProfileThumbs = [
     "img._s0._4ooo._5xib._5sq7._44ma._rw.img",  // Post thumbnail.
-    "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.      
+    "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.
+    "._38vo img._s0._4ooo._5xib._44ma.img",     // Shared post.
     "._3b-9 img.UFIActorImage._54ru.img",       // Comments.
     "._55lt img.img",                           //
     "._31o4._3njy img.img",                     //
     "img._s0._4ooo.tickerStoryImage._54ru.img", // Top right notifications.
     ".img._s0._rw.img",                         //
+
+
+    "img._s0._4ooo._1ve7._3s6v._rv.img"         // Friends list.
 ]; 
 
 // fbProfilePicture : 
@@ -121,7 +126,6 @@ var fbProfileThumbs = [
 var fbProfilePicture = [
     "img.profilePic.img",               // main profile image normal user.
     "img._4jhq.img",                    // Page profile pic on far left style.
-    "img._s0._4ooo._1ve7._3s6v._rv.img" // Friends list.
 ];
 
 
