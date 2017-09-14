@@ -4,7 +4,7 @@
 Facebook experience by replacing all your friends profile images and names 
 with Mark Zuckerberg.
 
-![zuck Preview](mark_xoxo/zuckPreview.png)
+![zuck Preview](mark_xoxo/preview1.png)
 
 ### Ongoing additons.
 As the Facebook DOM is constantly changing and can vary from user to user. This 
