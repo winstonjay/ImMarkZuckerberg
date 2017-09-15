@@ -15,6 +15,8 @@ TODO:
     *   Correctly label with comments all the DOM selectors.
 
     *   Publish: https://developer.chrome.com/webstore/publish
+
+    *   Work out way not to change users own profile name.
 */
 "use strict";
 
