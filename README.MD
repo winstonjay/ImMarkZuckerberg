@@ -19,11 +19,11 @@ $ git clone https://github.com/winstonjay/ImMarkZuckerberg.git
 
 If you donwload via the green button you will have to un-zip the folder.
 
-**Add to your browser extensions:** With a Chrome browser, open up the exstensions page located at: [chrome://extensions](chrome://extensions). Next, open up your the folder you just downloaded and the 
+**Add to your browser extensions:** With a Chrome browser, open up the exstensions page located at: `chrome://extensions`. Next, open up your the folder you just downloaded and the 
 drag and drop the `chromePackage` folder into the webpage you just opened. 
 
-**I'm Mark Zuckerberg should now be installed:** Vist [https://www.facebook.com/](https://www.facebook.com/) and 
-enjoy your new online life with just you, yourself and Mark.
+**I'm Mark Zuckerberg should now be installed:** Vist [facebook.com](https://www.facebook.com/) and 
+enjoy your new life with just you, yourself and Mark.
 
 ![Preview Image 2](img/preview2.jpg)
 
