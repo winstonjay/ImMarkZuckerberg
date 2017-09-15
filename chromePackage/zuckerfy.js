@@ -9,7 +9,7 @@ Mark Zuckerberg.
 Aim:
     Try to replace the existance of all usernames and profile images with
     Mark Zuckerberg within the Facebook DOM, as to give the illusion that
-    its just you and Mark there.
+    its just you and Mark online.
 
 TODO:
     *   Refine selector locations to be more element specific and hunt out
@@ -17,12 +17,11 @@ TODO:
 
     *   Correctly label with comments all the DOM selectors.
 
-    *   Maybe Add with multiple images of Mark to spice it up a bit.
-
-    * Publish: https://developer.chrome.com/webstore/publish
+    *   Publish: https://developer.chrome.com/webstore/publish
 */
 "use strict";
 
+// main : called at the end of the file.
 function main() {
     var mark = new Mark();
     mark.zuckerfy();
@@ -40,104 +39,102 @@ function Mark() {
     given selctions becomes ready (similar to an inital document ready function). */
 
     this.zuckerfy = function() { 
-        // Intialise site-wide observers.
-        addUsernameObservers(fbUserNames.allSite);
-        addImageObservers(fbUserImg.globalThumbs, MarkImage128);
-        // Are we at the homepage or somewhere else?
-        // Find out and add page specific observers.
-        if (window.location.pathname == '/') {
-            console.log("Home.");
-            addUsernameObservers(fbUserNames.home);
-        } else {
-            console.log("page.");
-            addUsernameObservers(fbUserNames.page);
-            addImageObservers(fbUserImg.pageThumbs, MarkImage128);
-            addImageObservers(fbUserImg.mainProfile, MarkImage512);
-        }
+        // Intialise site-wide observers. Inital tried to seperate 
+        // selectors of different page types. no refresh reloads 
+        // were messing this up, instead of a work-around just 
+        // add all mutation observers.
+        addUsernameObservers(fbUserNames);
+        addImageObservers(fbUserThumb, MarkImage128);
+        addImageObservers(fbUserProfile, MarkImage512);
     }
-    // addImageObservers : call with a list of selectors and
-    // a specific size image to relplace with.
+
+
     function addImageObservers(locations, image) {
+        // Call with a list of selectors and a specific 
+        // size image to relplace with
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
                 element.src = image;
             });
         }
     }
-    // addUsernameObservers : Usernames are allways replaced
-    // with "Mark Zuckerberg". Call with different selectors
-    // depending on page the location.
+
     function addUsernameObservers(locations) {
+        // Usernames are allways replaced with "Mark Zuckerberg". 
+        // Call with different selectors depending on page the location.
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
+                if (!element.hasChildNodes()) {
+                    return
+                }
+                if (element.childNodes[0].nodeType === Node.ELEMENT_NODE) {
+                    return
+                }
                 element.textContent = MarkZuckerberg;
             });
         }
     }
-    // TODO: data tooltip selectors so when elements are hovered
-    // on they pop up with mark.
+    // TODO (maybe): data tooltip selectors so when elements 
+    // are hovered on they pop up with mark.
 }
 
-/* Selector locations. *
-========================
-These are probally going to change pretty often. 
-*/
-var fbUserNames = {
-    allSite: [
-        ".fwb.fcg a",                   // Feed post header.
-        ".fwb a",                       // Feed post header.
-        ".tickerFeedMessage span.fwb",  // top right side feed notifications.
-        "a.profileLink",                // 
-        "a.UFICommentActorName",        // Feed post comments.
-        "._55lr",                       // Right sidebar contact.
-        "._364g",                       // sidebar search result.
-        ".titlebarText.fixemoji span",  //
-        ".author.fixemoji span",        // Blue navigation messages drop-down.
-        "div._4l_v span.fwb",           // notifications dropdown.
-        "a._zci",                       // name on videos pictures ?
-        ".tooltipText span"             // pop ups ? 
-    ],
-    home: [
-        ".fbRemindersTitle strong",     // reminders like birthdays.
-        "a.fwn",                        // when you click on birthday's and a list pops up.
-        ".name span.nameText",          // little right name links.
-        "._1fw3"                        // stories.
-    ],
-    page: [ 
-        ".alternate_name",               // under main name.
-        "#fb-timeline-cover-name",       //
-        "._33vv a",                      // Page Name.
-        "._50f3",                        // friends tiles (profile page).
-        "a.nameButton span.uiButtonText" // secondary header.
-    ]
-};
+/* Username locations */
+var fbUserNames = [
+    ".fwb.fcg a",                    // Feed post header.
+    ".fwb a",                        // Feed post header.
+    ".tickerFeedMessage span.fwb",   // top right side feed notifications.
+    "a.profileLink",                 // 
+    "a.UFICommentActorName",         // Feed post comments.
+    "._55lr",                        // Right sidebar contact.
+    "._364g",                        // sidebar search result.
+    ".titlebarText.fixemoji span",   //
+    ".author.fixemoji span",         // Blue navigation messages drop-down.
+    "div._4l_v span.fwb",            // notifications dropdown.
+    "a._zci",                        // name on videos pictures ?
+    ".tooltipText span",             // pop ups ? 
+    "._3q34 span",                   // messages notifications. ???
+    "._5v0s._5my8",                  // trending list.
 
-var fbUserImg = {
-    globalThumbs: [
-        "img._s0._4ooo._5xib._5sq7._44ma._rw.img",  // Post thumbnail.
-        "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.
-        "._38vo img._s0._4ooo._5xib._44ma.img",     // Shared post.
-        "._3b-9 img.UFIActorImage._54ru.img",       // Comments.
-        "._55lt img.img",                           //
-        "._31o4._3njy img.img",                     //
-        "img._s0._4ooo.tickerStoryImage._54ru.img", // Top right notifications.
-        ".img._s0._rw.img"                          //
-    ],
-    pageThumbs: [
-        "img._s0._4ooo._1ve7._3s6v._rv.img",        // Friends list.
-        "img._s0._4ooo._1ve7._rv.img"               // friends list in friends list page.
-    ],
-    mainProfile: [
-        "img.profilePic.img",                       // main profile image normal user.
-        "img._4jhq.img"                             // Page profile pic on far left style.
-    ]
-};
+    ".fbRemindersTitle strong",      // reminders like birthdays.
+    "a.fwn",                         // when you click on birthday's and a list pops up.
+    ".name span.nameText",           // little right name links.
+    "._1fw3",                        // stories.
 
-/* 'ready' Utility. *
-=====================
+    ".alternate_name",               // under main name.
+    "#fb-timeline-cover-name",       //
+    "._33vv a",                      // Page Name.
+    "._50f3",                        // friends tiles (profile page).
+    "a.nameButton span.uiButtonText" // secondary header.
+];
+
+/* User image locations */
+var fbUserThumb = [
+    "img._s0._4ooo._5xib._5sq7._44ma._rw.img",  // Post thumbnail.
+    "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.
+    "._38vo img._s0._4ooo._5xib._44ma.img",     // Shared post.
+    "._3b-9 img.UFIActorImage._54ru.img",       // Comments.
+    "._55lt img.img",                           //
+    "._31o4._3njy img.img",                     //
+    "img._s0._4ooo.tickerStoryImage._54ru.img", // Top right notifications.
+    ".img._s0._rw.img",                         //
+    "._4ld- img.img",                           // chat contact search results.
+    "img._62bh.img._8o._8r._2qgu.img",          // notififications dropdown..
+    "._1fw9._1fw0._1fwa img._1fwb.img",         // stories.
+
+    "img._s0._4ooo._1ve7._3s6v._rv.img",        // Friends list.
+    "img._s0._4ooo._1ve7._rv.img",              // friends list in friends list page.
+];
+
+var fbUserProfile = [
+    "img.profilePic.img",                       // main profile image normal user.
+    "img._4jhq.img",                            // Page profile pic on far left style.
+];
+
+/* 
+'ready' Utility.
+
 Creates MutationObservers so our selected elements will change to Mark when 
-they are dynamically created by facebook.
-Written by Ryan Morr.
+they are dynamically created by facebook. Written by Ryan Morr. Link/source:
 http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/ 
 */
 (function(win) {
@@ -185,5 +182,5 @@ http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/
     win.ready = ready; 
 })(this);
 
-/* Run Main... */
+/* Finally run main... */
 main();

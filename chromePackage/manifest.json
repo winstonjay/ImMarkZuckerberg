@@ -17,7 +17,7 @@
             "matches": [
                 "*://*.facebook.com/*"
             ],
-            "js": [ "zuckerfy.min.js" ]
+            "js": [ "zuckerfy.js" ]
         }
     ]
 }
