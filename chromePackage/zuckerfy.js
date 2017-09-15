@@ -18,8 +18,8 @@ TODO:
 */
 "use strict";
 
-// main : called at the end of the file.
-function main() {
+// Main called at the end of the file.
+function imMarkZuckerbergMain() {
     var mark = new Mark();
     mark.zuckerfy();
 }
@@ -40,9 +40,9 @@ function Mark() {
         // selectors of different page types. no refresh reloads 
         // were messing this up, instead of a work-around just 
         // add all mutation observers.
-        addUsernameObservers(fbUserNames);
-        addImageObservers(fbUserThumb, MarkImage128);
-        addImageObservers(fbUserProfile, MarkImage512);
+        addUsernameObservers(fbUserNameLocations);
+        addImageObservers(fbUserThumbLocations, MarkImage128);
+        addImageObservers(fbUserProfileLocations, MarkImage512);
     }
 
 
@@ -81,7 +81,7 @@ function Mark() {
 }
 
 /* Username locations */
-var fbUserNames = [
+var fbUserNameLocations = [
     ".fwb.fcg a",                    // Feed post header.
     ".fwb a",                        // Feed post header.
     ".tickerFeedMessage span.fwb",   // top right side feed notifications.
@@ -113,7 +113,7 @@ var fbUserNames = [
 ];
 
 /* User image locations */
-var fbUserThumb = [
+var fbUserThumbLocations = [
     "img._s0._4ooo._5xib._5sq7._44ma._rw.img",  // Post thumbnail.
     "img._s0._4ooo._5xib._44ma._54ru.img",      // Sponsored link that others liked.
     "._38vo img._s0._4ooo._5xib._44ma.img",     // Shared post.
@@ -133,7 +133,7 @@ var fbUserThumb = [
     "img._62bi.img._8o._8r._2qgu.img",          // list in /notifications page.
 ];
 
-var fbUserProfile = [
+var fbUserProfileLocations = [
     "img.profilePic.img",                       // main profile image normal user.
     "img._4jhq.img",                            // Page profile pic on far left style.
 ];
@@ -191,4 +191,4 @@ http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/
 })(this);
 
 /* Finally run main... */
-main();
+imMarkZuckerbergMain();
