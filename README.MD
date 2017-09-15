@@ -4,7 +4,7 @@
 Facebook experience by replacing all your friends profile images and names 
 with Mark Zuckerberg. It is not in the Chrome Store yet but aims to be soon.
 
-![zuck Preview](img/preview1.jpg)
+![Preview Image 1](img/preview1.jpg)
 
 ### Installation.
 
@@ -19,11 +19,13 @@ $ git clone https://github.com/winstonjay/ImMarkZuckerberg.git
 
 If you donwload via the green button you will have to un-zip the folder.
 
-**Add to your browser extensions:** With a Chrome browser, open up the exstensions page located at: <chrome://extensions>. Next, open up your the folder you just downloaded and the drag and drop the
-`chromePackage` folder into the webpage you just opened. 
+**Add to your browser extensions:** With a Chrome browser, open up the exstensions page located at: [chrome://extensions](chrome://extensions). Next, open up your the folder you just downloaded and the 
+drag and drop the `chromePackage` folder into the webpage you just opened. 
 
-**I'm Mark Zuckerberg should now be installed.**
+**I'm Mark Zuckerberg should now be installed:** Vist [https://www.facebook.com/](https://www.facebook.com/) and 
+enjoy your new online life with just you, yourself and Mark.
 
+![Preview Image 2](img/preview2.jpg)
 
 ### Ongoing additons.
 As the Facebook DOM is constantly changing and can vary from user to user. This 
