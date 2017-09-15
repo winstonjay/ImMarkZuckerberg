@@ -14,10 +14,8 @@
     ],
     "content_scripts": [
         {
-            "matches": [
-                "*://*.facebook.com/*"
-            ],
-            "js": [ "zuckerfy.min.js" ]
+            "matches": [ "*://*.facebook.com/*" ],
+            "js":      [ "zuckerfy.min.js" ]
         }
     ]
 }
