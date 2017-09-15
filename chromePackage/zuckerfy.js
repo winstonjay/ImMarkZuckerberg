@@ -1,7 +1,4 @@
-/*===========================================
-* * *     I'm Mark Zuckerberg           * * * 
-=============================================
-
+/*
 "I'm Mark Zuckerberg" is a Chrome extension that customises your Facebook 
 experience by replacing all your friends profile images and names with 
 Mark Zuckerberg.
