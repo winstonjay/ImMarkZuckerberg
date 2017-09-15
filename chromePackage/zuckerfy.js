@@ -54,6 +54,9 @@ function Mark() {
         // size image to relplace with
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
+                if (element.alt.includes("your Profile Photo")) {
+                    return
+                }
                 element.src = image;
             });
         }
@@ -64,9 +67,11 @@ function Mark() {
         // Call with different selectors depending on page the location.
         for (var i = 0; i < locations.length; i++) {
             ready(locations[i], function(element) {
+                // Js counts everything including whitespace as a child-node.
                 if (!element.hasChildNodes()) {
                     return
                 }
+                // We dont want to overite an element.
                 if (element.childNodes[0].nodeType === Node.ELEMENT_NODE) {
                     return
                 }
@@ -99,6 +104,9 @@ var fbUserNames = [
     "a.fwn",                         // when you click on birthday's and a list pops up.
     ".name span.nameText",           // little right name links.
     "._1fw3",                        // stories.
+    
+    "._1qt5._5l-3 span._1ht6",       // In messenger page ajax.
+    "h2._17w2 span._3oh-",           // messenger page header.
 
     ".alternate_name",               // under main name.
     "#fb-timeline-cover-name",       //
@@ -124,6 +132,8 @@ var fbUserThumb = [
 
     "img._s0._4ooo._1ve7._3s6v._rv.img",        // Friends list.
     "img._s0._4ooo._1ve7._rv.img",              // friends list in friends list page.
+
+    "img._62bi.img._8o._8r._2qgu.img",          // list in /notifications page.
 ];
 
 var fbUserProfile = [
