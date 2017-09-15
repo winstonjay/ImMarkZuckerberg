@@ -34,4 +34,4 @@ Vist [facebook.com](https://www.facebook.com/) and enjoy your new life with just
 
 ## Contributions
 
-Due to the changing and dynamic nature of facebook.com element selectors need constant maintenance to make replace as many user instances as possible. This isn't complicated but just requires hunting out elements in the Facebook DOM. Contributions are more than welcome and it would be appreciated if any instances where you feel a username or user image should be replaced isn’t.
+Due to the changing and dynamic nature of facebook.com the list of element selectors used in the exstension need constant maintenance to make replace as many user instances as possible. This isn't complicated but just requires hunting out elements in the Facebook DOM. Contributions are more than welcome and it would be appreciated if any instances where you feel a username or user image should be replaced isn’t.
