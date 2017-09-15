@@ -26,9 +26,3 @@ drag and drop the `chromePackage` folder into the webpage you just opened.
 enjoy your new life with just you, yourself and Mark.
 
 ![Preview Image 2](img/preview2.jpg)
-
-### Ongoing additons.
-As the Facebook DOM is constantly changing and can vary from user to user. This 
-exstention needs constant updating to make sure as many user instances are replaced
-as possible. This is time consuming but merely requires snooping out elements in the 
-DOM that contain usernames and profile images.
