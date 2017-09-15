@@ -120,6 +120,7 @@ var fbUserThumb = [
     "._4ld- img.img",                           // chat contact search results.
     "img._62bh.img._8o._8r._2qgu.img",          // notififications dropdown..
     "._1fw9._1fw0._1fwa img._1fwb.img",         // stories.
+    "._2ar2 img._s0._4ooo.img",                 // post reactions popup.
 
     "img._s0._4ooo._1ve7._3s6v._rv.img",        // Friends list.
     "img._s0._4ooo._1ve7._rv.img",              // friends list in friends list page.
