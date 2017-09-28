@@ -50,8 +50,7 @@ function Mark() {
         addImageObservers(fbUserThumbLocations, MarkImage128);
         addImageObservers(fbUserProfileLocations, MarkImage512);
     }
-
-
+    
     function addImageObservers(locations, image) {
         // Call with a list of selectors and a specific 
         // size image to relplace with
@@ -64,7 +63,7 @@ function Mark() {
             });
         }
     }
-
+    
     function addUsernameObservers(locations) {
         // Usernames are allways replaced with "Mark Zuckerberg". 
         // Call with different selectors depending on page the location.
@@ -144,12 +143,12 @@ var fbUserProfileLocations = [
 
 // We dont wanna replace the users name on their own profile page.
 if (window.location.href.includes("profile.php?") == false) {
-    fbUserNames.concat([
+    fbUserNameLocations.concat([
         "#fb-timeline-cover-name",              // username on profile page.
         ".alternate_name",                      // under main name.
         "a.nameButton span.uiButtonText"        // secondary header on scroll.
     ]);
-    fbUserThumb.push("img._s0._rw.img");       // secondary header on scroll.
+    fbUserThumbLocations.push("img._s0._rw.img"); // secondary header on scroll.
 }
 
 /* 

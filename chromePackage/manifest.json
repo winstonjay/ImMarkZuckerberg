@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "I'm Mark Zuckerberg",
     "description": "Replaces all your Facebook friends with Mark Zuckerberg.",
-    "version": "1.0",
+    "version": "1.0.1",
     "icons": {  
         "16": "mark_xoxo/mark16.png",
         "48": "mark_xoxo/mark48.png",
