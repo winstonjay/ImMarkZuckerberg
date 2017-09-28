@@ -8,6 +8,10 @@ Aim:
     Mark Zuckerberg within the Facebook DOM, as to give the illusion that
     its just you and Mark online.
 
+Approach:
+    Manually hunt down DOM locations of usernames and user profile images and
+    provide program a list of locations to update. Use mutaion observers to 
+    keep track dynamic content.
 TODO:
     *   Refine selector locations to be more element specific and hunt out
         un-applied profile images and usernames. 
@@ -103,15 +107,13 @@ var fbUserNameLocations = [
     "a.fwn",                         // when you click on birthday's and a list pops up.
     ".name span.nameText",           // little right name links.
     "._1fw3",                        // stories.
+    "a._hli",                        // image post pop ups.
     
     "._1qt5._5l-3 span._1ht6",       // In messenger page ajax.
     "h2._17w2 span._3oh-",           // messenger page header.
 
-    ".alternate_name",               // under main name.
-    "#fb-timeline-cover-name",       //
     "._33vv a",                      // Page Name.
     "._50f3",                        // friends tiles (profile page).
-    "a.nameButton span.uiButtonText" // secondary header.
 ];
 
 /* User image locations */
@@ -123,7 +125,6 @@ var fbUserThumbLocations = [
     "._55lt img.img",                           //
     "._31o4._3njy img.img",                     //
     "img._s0._4ooo.tickerStoryImage._54ru.img", // Top right notifications.
-    ".img._s0._rw.img",                         //
     "._4ld- img.img",                           // chat contact search results.
     "img._62bh.img._8o._8r._2qgu.img",          // notififications dropdown..
     "._1fw9._1fw0._1fwa img._1fwb.img",         // stories.
@@ -133,12 +134,23 @@ var fbUserThumbLocations = [
     "img._s0._4ooo._1ve7._rv.img",              // friends list in friends list page.
 
     "img._62bi.img._8o._8r._2qgu.img",          // list in /notifications page.
+    ".uiScaledImageContainer.profilePic",       // birthdays.
 ];
 
 var fbUserProfileLocations = [
     "img.profilePic.img",                       // main profile image normal user.
     "img._4jhq.img",                            // Page profile pic on far left style.
 ];
+
+// We dont wanna replace the users name on their own profile page.
+if (window.location.href.includes("profile.php?") == false) {
+    fbUserNames.concat([
+        "#fb-timeline-cover-name",              // username on profile page.
+        ".alternate_name",                      // under main name.
+        "a.nameButton span.uiButtonText"        // secondary header on scroll.
+    ]);
+    fbUserThumb.push("img._s0._rw.img");       // secondary header on scroll.
+}
 
 /* 
 'ready' Utility.
